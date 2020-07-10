@@ -1,0 +1,30 @@
+.Buy-panel {
+    position: absolute;
+    bottom: 117px;
+    left: 0;
+    width: 200px;
+    height: 0;
+    background-color: rgba(50, 213, 150, 0.6);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: height ease-in 250ms;
+}
+
+.Buy-button {
+    margin-top: 50px;
+    background: none;
+    border: 2px solid white;
+    width: 60px;
+    height: 30px;
+    color: white;
+    font-family: "M Yuen PRC", sans-serif;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity ease-in 300ms;
+    cursor: pointer;
+}
+
+.Buy-button:hover {
+    color: aquamarine;
+    border: 2px solid aquamarine;
+}

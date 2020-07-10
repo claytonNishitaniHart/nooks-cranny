@@ -1,0 +1,70 @@
+.Card-base {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    text-align: center;
+    border: solid 1px black;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.Card-base:hover {
+    box-shadow: 8px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.Card-base-image {
+    background-color: white;
+    border-bottom: solid 1px black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.Card-image {
+    max-width: 160px;
+    max-height: 160px;
+}
+
+.Card-info {
+    position: absolute;
+    text-align: center;
+    margin: 10px 20px 20px;
+    height: 65px;
+    width: 160px;
+}
+
+.Card-info-variants {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 160px;
+}
+
+.Card-info-name {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 160px;
+}
+
+.Card-info-price {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 160px;
+    color: #32d596;
+}
+
+.bellbag {
+    max-width: 20px;
+    transform: translate(2px, 2px);
+}
+
+.variants {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: solid 1px black;
+    background-color: #32d596;
+    margin: 5px;
+}
