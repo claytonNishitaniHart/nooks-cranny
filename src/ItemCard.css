@@ -5,7 +5,7 @@
     text-align: center;
     /*border: solid 1px black;*/
     background-color: #fafafa;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
 }
 
@@ -17,8 +17,8 @@
 .Card-base-image {
     background-color: white;
     /*border-bottom: solid 1px black;*/
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    /*border-top-left-radius: 10px;*/
+    /*border-top-right-radius: 10px;*/
 }
 
 .Card-image {

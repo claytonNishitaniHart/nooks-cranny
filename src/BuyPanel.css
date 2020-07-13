@@ -5,8 +5,8 @@
     width: 200px;
     height: 0;
     background-color: rgba(50, 213, 150, 0.6);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    /*border-top-left-radius: 10px;*/
+    /*border-top-right-radius: 10px;*/
     transition: height ease-in 250ms;
 }
 
