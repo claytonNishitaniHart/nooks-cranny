@@ -1,7 +1,10 @@
 .CartItem-base {
     position: relative;
     height: 75px;
-    border-bottom: solid 1px black;
+}
+
+.CartItem-base:nth-child(even) {
+    background-color: rgba(50, 213, 150, 0.1);
 }
 
 .CartItem-image-background {

@@ -35,7 +35,6 @@ class App extends React.Component{
                             this.setState({items: [...this.state.items, result[item]]});
                         }
                     }
-                    //this.setState({results: this.state.items.slice(0, 30), cart: [{cartItem: {item: [this.state.items[0][0]], quantity: 1}}]});
                     this.setState({results: this.state.items.slice(0, 30), allResults: this.state.items});
                 },
                 (error) => {
@@ -105,7 +104,7 @@ class App extends React.Component{
 
     searchItems(event) {
         let searchTerm = event.target.value.toString();
-        this.setState({results: this.state.items.filter(x => x[0].name["name-USen"].includes(searchTerm)).slice(0, 30), allResults: this.state.items.filter(x => x[0].name["name-USen"].includes(searchTerm))});
+        this.setState({pageNumber: 0, results: this.state.items.filter(x => x[0].name["name-USen"].includes(searchTerm)).slice(0, 30), allResults: this.state.items.filter(x => x[0].name["name-USen"].includes(searchTerm))});
     }
 
     changePage(amount) {
@@ -138,8 +137,11 @@ class App extends React.Component{
             <button className={"pagination-Button button-right"} onClick={() => this.changePage(1)}>
                 next
             </button>;
-
-        if (this.state.pageNumber === 0) {
+    
+        if (this.state.allResults.length === 0) {
+            PrevPage_button = null;
+            NextPage_button = null;
+        } else if (this.state.pageNumber === 0) {
             PrevPage_button = null;
         } else if (this.state.allResults.length <= (this.state.pageNumber + 1) * 30) {
             NextPage_button = null;
@@ -171,9 +173,9 @@ class App extends React.Component{
                         <FaTimes className={"close_cart-icon-white"}/>
                     </button>
                 </div>
-            Cart_content = this.state.cart.map(item => {
+            Cart_content = this.state.cart.map((item, index) => {
                 return(
-                    <CartItem key={item.cartItem.item[0].name["name-USen"]} item_image={item.cartItem.item[0].image_uri} english_name={item.cartItem.item[0].name["name-USen"]} quantity={item.cartItem.quantity} price={item.cartItem.item[0]["buy-price"]} removeFromCartFunc={this.removeFromCart} changeQuantityFunc={this.changeQuantity} itemObject={item}/>
+                    <CartItem key={index} item_image={item.cartItem.item[0].image_uri} english_name={item.cartItem.item[0].name["name-USen"]} quantity={item.cartItem.quantity} price={item.cartItem.item[0]["buy-price"]} removeFromCartFunc={this.removeFromCart} changeQuantityFunc={this.changeQuantity} itemObject={item}/>
                 );
             });
             Cart_button =
@@ -210,6 +212,7 @@ class App extends React.Component{
                 </div>
                 <div className={"pagination"}>
                     {PrevPage_button}
+                    <span className={"pagination-PageNumber"}>page {this.state.pageNumber + 1}</span>
                     {NextPage_button}
                 </div>
                 <div className={"results"}>
@@ -221,6 +224,7 @@ class App extends React.Component{
                 </div>
                 <div className={"pagination"}>
                     {PrevPage_button}
+                    <span className={"pagination-PageNumber"}>page {this.state.pageNumber + 1}</span>
                     {NextPage_button}
                 </div>
                 <div className={"Footer"}>

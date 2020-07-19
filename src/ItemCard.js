@@ -29,8 +29,8 @@ class ItemCard extends React.Component {
             variants = variants.slice(0, 5);
         }
         return(
-            <div className={"Card-base"} onMouseEnter={() => this.showBuyButton()} onMouseLeave={() => this.showBuyButton()}>
-                <div className={"Card-base-image"}>
+            <div className={"Card-base"}>
+                <div className={"Card-base-image"} onMouseEnter={() => this.showBuyButton()} onMouseLeave={() => this.showBuyButton()}>
                     <BuyPanel showBuy={this.state.showBuy} uniqueIdP={this.props.english_name + "panel"} uniqueIdB={this.props.english_name + "button"} addToCartFunc={this.props.addToCartFunc} itemObject={this.props.itemObject}/>
                     <img className={"Card-image"} src={(this.state.uri === "" ? this.props.item_image : this.state.uri)} alt={"item"}/>
                 </div>
