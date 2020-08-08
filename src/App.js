@@ -17,7 +17,8 @@ class App extends React.Component{
             results: [],
             cart: [],
             showCart: false,
-            pageNumber: 0
+            pageNumber: 0,
+            loaded: false
         }
 
         this.addToCart = this.addToCart.bind(this);
@@ -35,7 +36,7 @@ class App extends React.Component{
                             this.setState({items: [...this.state.items, result[item]]});
                         }
                     }
-                    this.setState({results: this.state.items.slice(0, 30), allResults: this.state.items});
+                    this.setState({results: this.state.items.slice(0, 30), allResults: this.state.items, loaded: true});
                 },
                 (error) => {
                     console.log("did not work");
@@ -120,7 +121,7 @@ class App extends React.Component{
     }
 
     render() {
-        let Cart, Header, Cart_content, Cart_button, PrevPage_button, NextPage_button;
+        let Cart, Header, Cart_content, Cart_button, PrevPage_button, NextPage_button, Results;
         let subtotal = 0, quantities = 0;
 
         for(let x in this.state.cart) {
@@ -199,6 +200,57 @@ class App extends React.Component{
         } else{
             Cart = null;
         }
+        
+        Results = this.state.loaded ?
+          <div className={'results'}>{this.state.results.map(item => {
+                return(
+                  <ItemCard key={item[0].name["name-USen"]} item_image={item[0].image_uri} english_name={item[0].name["name-USen"]} price={item[0]["buy-price"]} variants={item} addToCartFunc={this.addToCart} itemObject={item[0]}/>
+                );
+          })}</div> :
+          <div className={'results'}>
+              <div className={"skeleton-base"}>
+                  <div className={"skeleton-image"}/>
+                  <div className={"skeleton-info"}>
+                      <div className={"skeleton-title"}/>
+                      <div className={"skeleton-price"}/>
+                  </div>
+              </div>
+              <div className={"skeleton-base"}>
+                  <div className={"skeleton-image"}/>
+                  <div className={"skeleton-info"}>
+                      <div className={"skeleton-title"}/>
+                      <div className={"skeleton-price"}/>
+                  </div>
+              </div>
+              <div className={"skeleton-base"}>
+                  <div className={"skeleton-image"}/>
+                  <div className={"skeleton-info"}>
+                      <div className={"skeleton-title"}/>
+                      <div className={"skeleton-price"}/>
+                  </div>
+              </div>
+              <div className={"skeleton-base"}>
+                  <div className={"skeleton-image"}/>
+                  <div className={"skeleton-info"}>
+                      <div className={"skeleton-title"}/>
+                      <div className={"skeleton-price"}/>
+                  </div>
+              </div>
+              <div className={"skeleton-base"}>
+                  <div className={"skeleton-image"}/>
+                  <div className={"skeleton-info"}>
+                      <div className={"skeleton-title"}/>
+                      <div className={"skeleton-price"}/>
+                  </div>
+              </div>
+              <div className={"skeleton-base"}>
+                  <div className={"skeleton-image"}/>
+                  <div className={"skeleton-info"}>
+                      <div className={"skeleton-title"}/>
+                      <div className={"skeleton-price"}/>
+                  </div>
+              </div>
+          </div>
 
         return (
             <div className="App">
@@ -215,13 +267,7 @@ class App extends React.Component{
                     <span className={"pagination-PageNumber"}>page {this.state.pageNumber + 1}</span>
                     {NextPage_button}
                 </div>
-                <div className={"results"}>
-                    {this.state.results.map(item => {
-                        return(
-                            <ItemCard key={item[0].name["name-USen"]} item_image={item[0].image_uri} english_name={item[0].name["name-USen"]} price={item[0]["buy-price"]} variants={item} addToCartFunc={this.addToCart} itemObject={item[0]}/>
-                        );
-                    })}
-                </div>
+                {Results}
                 <div className={"pagination"}>
                     {PrevPage_button}
                     <span className={"pagination-PageNumber"}>page {this.state.pageNumber + 1}</span>

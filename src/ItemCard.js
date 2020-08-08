@@ -12,7 +12,7 @@ class ItemCard extends React.Component {
             showBuy: true
         }
     }
-
+    
     changeDisplayImage(_uri) {
         this.setState({uri: _uri});
     }
