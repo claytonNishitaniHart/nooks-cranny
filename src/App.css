@@ -46,6 +46,12 @@
   cursor: pointer;
 }
 
+@media only screen and (max-width: 600px) {
+  .Shopping-Cart {
+    right: 25px;
+  }
+}
+
 .Shopping-Cart:hover #cartIcon {
   color: aquamarine;
 }
